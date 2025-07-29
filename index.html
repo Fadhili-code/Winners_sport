@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremierBet - Track. Predict. Win.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">PremierBet</div>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#teams">Teams</a>
+                <a href="#fixtures">Fixtures</a>
+                <a href="#login">Login/Register</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#teams">Teams</a>
+            <a href="#fixtures">Fixtures</a>
+            <a href="#login">Login/Register</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Track. Predict. Win.</h1>
+            <button class="hero-btn" id="browse-matches-btn">Browse Matches</button>
+        </div>
+    </section>
+
+    <!-- Upcoming Matches Section -->
+    <section class="matches-section" id="matches">
+        <div class="container">
+            <h2 class="section-title">Upcoming Matches</h2>
+            <div class="matches-grid" id="matches-grid">
+                <!-- Match cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Page (Hidden by default) -->
+    <section class="team-page" id="team-page" style="display: none;">
+        <div class="container">
+            <div class="team-header">
+                <div class="team-info">
+                    <img class="team-logo-large" id="team-logo-large" src="" alt="Team Logo">
+                    <h1 class="team-name" id="team-name"></h1>
+                </div>
+                <div class="team-record" id="team-record">
+                    <span class="wins">W: <span id="wins-count">0</span></span>
+                    <span class="draws">D: <span id="draws-count">0</span></span>
+                    <span class="losses">L: <span id="losses-count">0</span></span>
+                </div>
+            </div>
+            
+            <div class="recent-form">
+                <h3>Recent Form</h3>
+                <div class="form-circles" id="form-circles">
+                    <!-- Form circles will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="filters">
+                <select id="season-filter">
+                    <option value="2024-25">2024/25</option>
+                    <option value="2023-24">2023/24</option>
+                </select>
+                <input type="text" id="opponent-search" placeholder="Search opponent...">
+            </div>
+
+            <div class="stats-table-container">
+                <table class="stats-table" id="stats-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Opponent</th>
+                            <th>Result</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stats-table-body">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="back-btn" id="back-to-home">Back to Home</button>
+        </div>
+    </section>
+
+    <!-- Match Page (Hidden by default) -->
+    <section class="match-page" id="match-page" style="display: none;">
+        <div class="container">
+            <div class="match-header">
+                <div class="match-teams">
+                    <div class="team-a">
+                        <img class="team-logo" id="match-team-a-logo" src="" alt="Team A">
+                        <span class="team-name" id="match-team-a-name"></span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team-b">
+                        <img class="team-logo" id="match-team-b-logo" src="" alt="Team B">
+                        <span class="team-name" id="match-team-b-name"></span>
+                    </div>
+                </div>
+                <div class="match-info">
+                    <div class="match-datetime" id="match-datetime"></div>
+                    <div class="countdown" id="countdown"></div>
+                </div>
+            </div>
+
+            <div class="head-to-head">
+                <h3>Head to Head</h3>
+                <div class="h2h-stats">
+                    <div class="stat-bar">
+                        <div class="stat-label">Team A Wins</div>
+                        <div class="bar">
+                            <div class="bar-fill team-a-wins" id="team-a-wins-bar"></div>
+                        </div>
+                        <span class="stat-value" id="team-a-wins-count">0</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label">Draws</div>
+                        <div class="bar">
+                            <div class="bar-fill draws" id="draws-bar"></div>
+                        </div>
+                        <span class="stat-value" id="h2h-draws-count">0</span>
+                    </div>
+                    <div class="stat-bar">
+                        <div class="stat-label">Team B Wins</div>
+                        <div class="bar">
+                            <div class="bar-fill team-b-wins" id="team-b-wins-bar"></div>
+                        </div>
+                        <span class="stat-value" id="team-b-wins-count">0</span>
+                    </div>
+                </div>
+
+                <div class="recent-meetings">
+                    <h4>Recent Meetings</h4>
+                    <div class="meetings-list" id="meetings-list">
+                        <!-- Recent meetings will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="betting-options">
+                <h3>Betting Options</h3>
+                <div class="betting-buttons">
+                    <button class="bet-btn team-a-btn" id="bet-team-a" data-team="a">
+                        <span class="team-name" id="bet-team-a-name"></span>
+                        <span class="odds" id="bet-team-a-odds">2.1</span>
+                    </button>
+                    <button class="bet-btn draw-btn" id="bet-draw" data-team="draw">
+                        <span class="team-name">Draw</span>
+                        <span class="odds" id="bet-draw-odds">3.0</span>
+                    </button>
+                    <button class="bet-btn team-b-btn" id="bet-team-b" data-team="b">
+                        <span class="team-name" id="bet-team-b-name"></span>
+                        <span class="odds" id="bet-team-b-odds">3.4</span>
+                    </button>
+                </div>
+                <button class="place-bet-btn" id="place-bet-btn" style="display: none;">Place Bet</button>
+            </div>
+
+            <button class="back-btn" id="back-to-matches">Back to Matches</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">© 2025 PremierBet. All rights reserved.</div>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
