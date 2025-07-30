@@ -14,9 +14,7 @@
             <div class="logo">PremierBet</div>
             <nav class="nav-links">
                 <a href="#home">Home</a>
-                <a href="#teams">Teams</a>
                 <a href="#fixtures">Fixtures</a>
-                <a href="#login">Login/Register</a>
             </nav>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -26,9 +24,7 @@
         </div>
         <div class="mobile-menu" id="mobile-menu">
             <a href="#home">Home</a>
-            <a href="#teams">Teams</a>
             <a href="#fixtures">Fixtures</a>
-            <a href="#login">Login/Register</a>
         </div>
     </header>
 
@@ -36,16 +32,21 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 class="hero-title">Track. Predict. Win.</h1>
-            <button class="hero-btn" id="browse-matches-btn">Browse Matches</button>
+            <div class="hero-controls" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 20px;">
+                <select id="team-dropdown" class="hero-btn" style="min-width: 200px;">
+                    <option value="">See Squad</option>
+                    <!-- Options will be populated by JS -->
+                </select>
+                <input type="text" id="h2h-search" class="hero-btn" placeholder="Search head-to-head..." style="min-width: 200px;" />
+            </div>
         </div>
     </section>
 
-    <!-- Upcoming Matches Section -->
+    <!-- Main Content Section -->
     <section class="matches-section" id="matches">
         <div class="container">
-            <h2 class="section-title">Upcoming Matches</h2>
             <div class="matches-grid" id="matches-grid">
-                <!-- Match cards will be populated by JavaScript -->
+                <!-- Content will be populated by JavaScript -->
             </div>
         </div>
     </section>
@@ -178,6 +179,8 @@
         </div>
     </section>
 
+    <!-- Error message area for league standings -->
+    <div id="league-error-message" class="error-message" style="display:none;"></div>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
